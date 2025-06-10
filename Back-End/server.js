@@ -18,9 +18,8 @@ mongoose.connect(process.env.MONGO_URI)
     console.log('Conection failed,Eror_message:',error);    
   });
 
-app.get('/', (req, res)=>{
-    res.json({app:'runing'})
-})
+const router=require('./src/routers/index.js')
+app.use('/v1',router)
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port: ${port}`));

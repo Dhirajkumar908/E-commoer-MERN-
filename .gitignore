@@ -2,11 +2,11 @@
 # 1) Runtime / dependency folders (always ignore)
 ###############################################################################
 **/node_modules/
-**/Back-End/node_modules/  # back‑end & front‑end
+**/Back-End/node_modules/  
 **/front‑end/E-comm-UI/node_modules/
 
-**/.vite/                 # Vite’s dev/build cache
-**/.next/                 # Next.js (if you ever add it)
+**/.vite/                 
+**/.next/                 
 **/.parcel-cache/
 **/.turbo/
 
