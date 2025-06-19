@@ -8,7 +8,7 @@ exports.SubmitOrder = async (req, res) => {
       return res.status(400).json({ message: "Required fields are missing" });
     }
 
-    console.log(req.body);
+    console.log(JSON.stringify(req.body));
 
     // Defensive checks for totalAmount
     const totalAmount = items.reduce((total, item) => {
@@ -48,10 +48,11 @@ exports.SubmitOrder = async (req, res) => {
 };
 
 exports.ListOrders = async (req, res) => {
+  console.log("Function called");
+  
   try {
     const { id } = req.params;
     console.log(id);
-
     const order = await Order.find({ userId: id });
     return res.status(200).json(order);
   } catch (e) {

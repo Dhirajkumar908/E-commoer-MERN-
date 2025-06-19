@@ -9,9 +9,8 @@ import Footer from "../components/Footer";
 function Home() {
   return (
     <>
-      <div className="px-6">
-        <Header />
-        <div className="px-6">
+      <div className="px-0 sm:px-6">
+        <div className="px-0 sm:px-6">
           <Breadcrumb/>
           <Carousel />
           <ProductGrid />

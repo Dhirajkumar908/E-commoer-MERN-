@@ -39,7 +39,7 @@ function generateToken(user) {
       role: user.role,
     };
 
-    const token = jwt.sign(payload, secret_key, { expiresIn: '1h' });
+    const token = jwt.sign(payload, secret_key);
     return token;
   } catch (e) {
     throw new Error("Error while generating token");

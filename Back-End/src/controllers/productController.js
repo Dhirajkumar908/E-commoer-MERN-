@@ -9,7 +9,7 @@ exports.addProduct = async (req, res) => {
 
     console.log(req.body);
 
-    // Validate required fields
+    // Validatimg required fields
     if (!name || !price || !description || !category) {
       return res.status(400).json({ message: "Required fields are missing" });
     }
@@ -57,7 +57,7 @@ exports.addProduct = async (req, res) => {
       .status(201)
       .json({ message: "Product added successfully", product });
   } catch (error) {
-    // Handle duplicate key error
+    
     if (error.code === 11000) {
       return res
         .status(409)
@@ -115,5 +115,15 @@ exports.ListProducts=async (req, res)=>{
 
     }catch (e) {
     return res.status(404).json({ Message: e.message });
+  }
+}
+
+exports.deleteProduct = async (req, res)=>{
+  try{
+    const {id}=req.params;
+    await Product.findByIdAndDelete({_id:id})
+    return res.status(200).json({message:"product deleted successfull"})
+  }catch(e){
+    return res.status(500).json({message:e.message});
   }
 }

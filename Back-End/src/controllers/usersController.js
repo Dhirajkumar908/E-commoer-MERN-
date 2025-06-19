@@ -19,8 +19,11 @@ exports.CreateUser = async (req, res) => {
 
     const user = await User({ email, password: hashedPassword, role });
     user.save();
-    res.status(201).json({ message: "User created successfully" });
+    res.status(201).json({ message: "Account created successfully" });
   } catch (error) {
+    if(error.status===409){
+      return res.status(401).json({ message: "Required fields are missing" });
+    }
     return res.json({ message: error.message });
   }
 };
@@ -38,13 +41,14 @@ exports.ListUser = async (req, res) => {
 exports.LoginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    
     if (!email || !password) {
       return res.status(400).json({ message: "Required fields are missing!" });
     }
 
     const user = await User.findOne({ email: email.toLowerCase() });
-
+    
+    
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password." });
     }
@@ -57,11 +61,11 @@ exports.LoginUser = async (req, res) => {
 
     const token = generateToken(user);
 
-    const { _id, name } = user;
+    const { _id, role } = user;
 
     return res.status(200).json({
       message: "Login successful!",
-      user: { _id, name, email },
+      user: { _id, role },
       token
     });
 
