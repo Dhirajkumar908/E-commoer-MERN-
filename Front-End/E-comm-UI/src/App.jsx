@@ -2,6 +2,10 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./app.css";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 import Layout from "./Pages/Layout";
 
 import Home from "./Pages/Home";
@@ -15,7 +19,7 @@ import Checkout from "./Pages/CheckOut";
 import FetchOrders from "./Pages/Orders";
 import AdminDashbord from "./Pages/AdminDashbord";
 
-import AdminRoute from "./routes/AdminRoutes";
+import AdminRoute from "./routes/AdminRoute";
 
 function App() {
   return (
@@ -31,16 +35,23 @@ function App() {
           <Route path="/order" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/order/history" element={<FetchOrders />} />
-          <Route
-            path="/Admin/Dashbord"
-            element={
-              <AdminRoute>
-                <AdminDashbord />
-              </AdminRoute>
-            }
-          />
+          <Route path="/Admin/Dashbord" element={
+            <AdminRoute> <AdminDashbord /> </AdminRoute>
+           
+            }/>
         </Route>
       </Routes>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}      // in ms
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
+      
     </>
   );
 }

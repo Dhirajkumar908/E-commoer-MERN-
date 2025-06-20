@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react"; // Add for mobile menu toggle
+import { useState } from "react"; 
 import UserDropDown from "../Components/UserDropDown";
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu toggle
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -11,9 +11,9 @@ function Header() {
 
   return (
     <header className="sticky top-0 bg-amber-100 shadow rounded-b-3xl z-40">
-      {/* Main Header Content */}
+      
       <div className="flex justify-between items-center px-4 py-3 md:px-6 md:py-4">
-        {/* Logo */}
+       
         <div className="text-2xl font-bold text-yellow-700">
           <NavLink to="/" className={({ isActive }) => (isActive ? "text-yellow-900" : "text-yellow-700")}>
             Bagyyes
@@ -21,7 +21,7 @@ function Header() {
           <p className="text-xs md:text-sm font-light">A hand made bag for your life style</p>
         </div>
 
-        {/* Hamburger Menu Button (Visible on Mobile) */}
+        
         <button
           className="md:hidden text-gray-700 focus:outline-none"
           onClick={toggleMenu}
@@ -32,15 +32,15 @@ function Header() {
           </span>
         </button>
 
-        {/* Navigation Links (Hidden on Mobile, Visible on Desktop) */}
+        
         <nav className="hidden md:flex gap-4 md:gap-6 text-gray-700 font-medium">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-yellow-700 font-semibold underline" : "hover:text-gray-400"
+              isActive ? "text-yellow-700 font-semibold underline" : "hover:text-gray-400 "
             }
           >
-            Home
+            <span className="text-xl">Home</span>
           </NavLink>
           <NavLink
             to="/aboutUs"
@@ -48,7 +48,8 @@ function Header() {
               isActive ? "text-yellow-700 font-semibold underline" : "hover:text-gray-400"
             }
           >
-            About
+            <span className="text-xl">About</span>
+            
           </NavLink>
           <NavLink
             to="/contact"
@@ -56,11 +57,12 @@ function Header() {
               isActive ? "text-yellow-700 font-semibold underline" : "hover:text-gray-400"
             }
           >
-            Contact
+            
+            <span className="text-xl">Contact</span>
           </NavLink>
         </nav>
 
-        {/* Right Side (Cart + UserDropDown) - Always Visible */}
+        
         <div className="hidden md:flex gap-4 items-center">
           <NavLink
             to="/cart"
@@ -77,7 +79,7 @@ function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu (Visible when toggled) */}
+     
       {isMenuOpen && (
         <div className="md:hidden bg-amber-100 px-4 pb-4">
           <nav className="flex flex-col gap-3 text-gray-700 font-medium">
@@ -86,7 +88,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive ? "text-yellow-700 font-semibold underline" : "hover:text-gray-400"
               }
-              onClick={() => setIsMenuOpen(false)} // Close menu on link click
+              onClick={() => setIsMenuOpen(false)} 
             >
               Home
             </NavLink>
@@ -108,7 +110,7 @@ function Header() {
             >
               Contact
             </NavLink>
-            {/* Cart and UserDropDown in Mobile Menu */}
+           
             <NavLink
               to="/cart"
               className={({ isActive }) =>

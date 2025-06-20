@@ -9,12 +9,12 @@ exports.addProduct = async (req, res) => {
 
     console.log(req.body);
 
-    // Validatimg required fields
+    
     if (!name || !price || !description || !category) {
       return res.status(400).json({ message: "Required fields are missing" });
     }
 
-    // Validate input formats
+   
     if (typeof name !== "string" || name.trim().length < 3) {
       return res
         .status(400)
@@ -42,7 +42,7 @@ exports.addProduct = async (req, res) => {
         });
     }
 
-    // Create and save product
+    
     const product = new Product({
       name: name.trim(),
       price: parsedPrice,
@@ -63,7 +63,7 @@ exports.addProduct = async (req, res) => {
         .status(409)
         .json({ message: "Product with this name already exists" });
     }
-    // Handle file upload errors
+    
     if (error.message.includes("Only JPEG, PNG, and GIF images are allowed")) {
       return res.status(400).json({ message: error.message });
     }

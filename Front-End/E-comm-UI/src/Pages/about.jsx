@@ -5,7 +5,7 @@ function AboutUs() {
 
   return (
     <div className="bg-amber-50 min-h-screen rounded-t-3xl">
-      {/* Hero Section */}
+     
       <section className="flex flex-col items-center justify-center text-center rounded-t-3xl mt-5 bg-amber-100 py-12 sm:py-16 md:py-20 px-4 sm:px-6 ">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-900 mb-4 sm:mb-6">
           About Baggyes
@@ -21,7 +21,7 @@ function AboutUs() {
         </button>
       </section>
 
-      {/* Our Story Section */}
+      
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
           <div className="md:w-1/2">
@@ -45,7 +45,7 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* Our Mission Section */}
+      
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-amber-100">
         <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-8 md:gap-12">
           <div className="md:w-1/2">
@@ -66,7 +66,7 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* Our Team Section */}
+      
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-900 text-center mb-8 sm:mb-12">
           Meet Our Team

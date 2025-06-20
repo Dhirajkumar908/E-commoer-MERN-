@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-//Verify jwt token
 function VerifyToken(req, res, next){
     try{
         const token=req.header('Authorization')
@@ -17,7 +16,6 @@ function VerifyToken(req, res, next){
 }
 
 
-
 function AuthorizaAdmin(req, res, next){
     if(req.userRole !=="Admin"){
         return res.status(403).json({message:'Authenticated but not allowed to access the resource.'});
@@ -26,7 +24,7 @@ function AuthorizaAdmin(req, res, next){
 }
 
 
-//genereate jwt token 
+
 function generateToken(user) {
   try {
     const secret_key = process.env.JWT_SECRET_KEY;

@@ -1,27 +1,29 @@
+import { toast } from "react-toastify";
 import API from "../api/api";
 import { useEffect, useState } from "react";
 
 function FetchOrders() {
   const [message, setMessage] = useState(null);
   const [orders, setOrders] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchOrders = async () => {
-      if (!user || !token) {
-        alert("You must login to see your orders");
+      if (!userId || !token) {
+        toast.warning("You must login to see your orders")
         return;
       }
 
       try {
-        const res = await API.get(`/orders/user/${user._id}`, {
+        const res = await API.get(`/orders/user/${userId}`, {
           headers: { Authorization: token },
         });
         setOrders(res.data);
         console.log(res.data);
       } catch (e) {
         setMessage(e.message || "Failed to fetch orders");
+        toast.error(e.message || "Failed to fetch orders")
       }
     };
 

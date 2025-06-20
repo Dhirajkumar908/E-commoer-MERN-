@@ -5,7 +5,7 @@ import Newl3 from "/img/newL3.jpg";
 function NewLaunchSection() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 my-10 sm:my-16 md:my-20 bg-amber-50 rounded-lg shadow-md px-4 sm:px-5">
-      {/* Text Section */}
+      
       <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 p-4 sm:p-5 md:h-[700px]">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-amber-400">
           Plan to
@@ -26,7 +26,7 @@ function NewLaunchSection() {
         </p>
       </div>
 
-      {/* Product Cards Section */}
+      
       <div className="flex flex-col md:flex-row md:justify-evenly gap-10 sm:gap-5 md:col-span-3 items-center md:items-end p-4 sm:p-5">
         <div
           className="flex flex-col justify-end items-center p-4 sm:p-5 gap-3 sm:gap-4 w-full sm:w-72 md:w-80 h-96 sm:h-72 md:h-[500px] rounded-lg shadow-lg transition duration-700 ease-in-out hover:-translate-y-8"

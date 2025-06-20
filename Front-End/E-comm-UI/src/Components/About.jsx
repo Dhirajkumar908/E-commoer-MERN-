@@ -1,7 +1,7 @@
 function About() {
   return (
     <div className="flex flex-col md:flex-row bg-gray-50 rounded-t-lg mb-12 sm:mb-16 md:mb-[100px]">
-      {/* About Us Section */}
+      
       <div className="flex flex-col p-6 sm:p-8 md:p-10 gap-4 sm:gap-5 md:gap-7 justify-center items-center w-full md:w-[25%]">
         <h1 className="font-bold text-xl sm:text-2xl md:text-2xl text-center">
           About us!
@@ -11,7 +11,7 @@ function About() {
         </p>
       </div>
 
-      {/* Large Assortment Section */}
+      
       <div className="flex flex-col p-6 sm:p-8 md:p-10 gap-2 sm:gap-3 justify-center items-center w-full md:w-[25%]">
         <div className="flex justify-center items-center h-12 sm:h-14 md:h-16 w-12 sm:w-14 md:w-16 bg-amber-200 rounded-full">
           <span className="material-symbols-outlined text-xl sm:text-2xl md:text-3xl">
@@ -26,7 +26,7 @@ function About() {
         </p>
       </div>
 
-      {/* Fast & Free Shipping Section */}
+      
       <div className="flex flex-col p-6 sm:p-8 md:p-10 gap-2 sm:gap-3 justify-center items-center w-full md:w-[25%]">
         <div className="flex justify-center items-center h-12 sm:h-14 md:h-16 w-12 sm:w-14 md:w-16 bg-amber-200 rounded-full">
           <span className="material-symbols-outlined text-xl sm:text-2xl md:text-3xl">
@@ -41,7 +41,7 @@ function About() {
         </p>
       </div>
 
-      {/* 24/7 Support Section */}
+      
       <div className="flex flex-col p-6 sm:p-8 md:p-10 gap-2 sm:gap-3 justify-center items-center w-full md:w-[25%]">
         <div className="flex justify-center items-center h-12 sm:h-14 md:h-16 w-12 sm:w-14 md:w-16 bg-amber-200 rounded-full">
           <span className="material-symbols-outlined text-xl sm:text-2xl md:text-3xl">

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import API from "../api/api";
 
+import { toast } from "react-toastify";
+
 function Loginuser() {
   const [user, setUser] = useState({ email: "", password: "" });
   const [response, setResponse] = useState(null);
@@ -24,10 +26,11 @@ function Loginuser() {
       if(userdata.token ){
         localStorage.setItem("token", userdata.token)
         if(res.data.user){
-            localStorage.setItem("userId", JSON.stringify(userdata.user._id));
-            localStorage.setItem("role", JSON.stringify(userdata.user.role));
+            localStorage.setItem("userId", userdata.user._id);
+            localStorage.setItem("role", userdata.user.role);
         }
       }
+      toast.success("Login success full")
       setTimeout(() => {
         navigate("/");
       }, 2000);

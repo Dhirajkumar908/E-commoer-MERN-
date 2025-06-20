@@ -4,7 +4,7 @@ const { hashPassword } = require("../utility/hashPassword.js");
 const { Compare_password } = require("../utility/compare_password.js");
 const { generateToken } = require("../middleware/jwt.js");
 
-//Create users
+
 exports.CreateUser = async (req, res) => {
   try {
     const { email, password, role } = req.body;
@@ -15,6 +15,8 @@ exports.CreateUser = async (req, res) => {
     if (isExist) {
       return res.status(409).json({ message: "User already exist" });
     }
+    console.log(password);
+    
     const hashedPassword = await hashPassword(password);
 
     const user = await User({ email, password: hashedPassword, role });
@@ -28,7 +30,7 @@ exports.CreateUser = async (req, res) => {
   }
 };
 
-//list all  users
+
 exports.ListUser = async (req, res) => {
   try {
     const users = await User.find();
@@ -46,14 +48,19 @@ exports.LoginUser = async (req, res) => {
       return res.status(400).json({ message: "Required fields are missing!" });
     }
 
-    const user = await User.findOne({ email: email.toLowerCase() });
+    console.log(password);
+
+    const user = await User.findOne({ email: email});
     
+    console.log(user)
     
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password." });
     }
 
     const match = await Compare_password(password, user.password);
+    console.log(match);
+    
 
     if (!match) {
       return res.status(401).json({ message: "Invalid email or password." });

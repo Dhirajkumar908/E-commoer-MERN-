@@ -4,6 +4,7 @@ import { CartContext } from "../context/CartContext";
 import API from "../api/api";
 
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Checkout() {
   const { cart, clearCart } = useContext(CartContext);
@@ -23,12 +24,16 @@ function Checkout() {
 
   const handleOrder = async () => {
     const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
+    const role = localStorage.getItem("role");
     
-    const userData=JSON.parse(user)
-
-    if (!token || !user) {
-      alert("You must be logged in to place the order");
+    
+    console.log(token);
+    console.log(userId);
+    console.log(role);
+    
+    if (!token || !userId || !role) {
+      toast.warning("You must be logged in to place the order")
       return;
     }
 
@@ -42,7 +47,7 @@ function Checkout() {
     }));
 
     const orderData = {
-      userId:userData._id,
+      userId:userId,
       items:items,
       shippingAddress: shipping,
     };
@@ -54,13 +59,13 @@ function Checkout() {
         headers: { Authorization: token },
       });
       clearCart();
-      alert("✅ Order placed successfully!");
+      toast.success(" Order placed successfully!")
       navigate("/");
-    //   console.log("Error from server:",res.data);
+    
       
     } catch (err) {
-    //   console.error(err);
-      alert("❌ Failed to place order.");
+    
+      toast.error("Failed to place order.")
     }
   };
 

@@ -4,6 +4,7 @@ const router=express.Router()
 const {CreateUser, ListUser, LoginUser}=require('../controllers/usersController.js')
 const {addProductWithUpload, UpdateProductWithUpload, ListProducts, deleteProduct}=require('../controllers/productController.js')
 const {SubmitOrder, ListOrders}=require('../controllers/OrderControls.js')
+const {ContactFrom}=require('../controllers/contact.js')
 const {VerifyToken, AuthorizaAdmin}=require('../middleware/jwt.js')
 
 router.get('/', (req, res)=>{
@@ -20,6 +21,8 @@ router.delete('/product/delete/:id',VerifyToken, AuthorizaAdmin, deleteProduct)
 router.get('/list_product',ListProducts)
 router.post('/order',VerifyToken, SubmitOrder)
 router.get('/orders/user/:id',VerifyToken, ListOrders)
+
+router.post('/contect', ContactFrom)
 
 
 

@@ -3,39 +3,39 @@ import { useRef, useEffect } from "react";
 function Reviews() {
   const scrollContainerRef = useRef(null);
 
-  // Function to scroll left
+ 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
     }
   };
 
-  // Function to scroll right
+  
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
   };
 
-  // Auto-scroll effect
+  
   useEffect(() => {
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
         const container = scrollContainerRef.current;
-        const cardWidth = 300; // Approximate width of one card (adjust based on screen size)
+        const cardWidth = 300; 
         const maxScroll = container.scrollWidth - container.clientWidth;
 
         if (container.scrollLeft >= maxScroll) {
-          // Reset to the beginning when reaching the end
+          
           container.scrollTo({ left: 0, behavior: "smooth" });
         } else {
-          // Scroll to the next card
+         
           container.scrollBy({ left: cardWidth, behavior: "smooth" });
         }
       }
-    }, 3000); // Scroll every 3 seconds
+    }, 3000); 
 
-    return () => clearInterval(interval); // Clean up interval on unmount
+    return () => clearInterval(interval); 
   }, []);
 
   return (
@@ -46,7 +46,7 @@ function Reviews() {
       <h1 className="font-bold text-xl sm:text-2xl md:text-2xl text-center sm:text-left">
         BAGGYES
       </h1>
-      {/* Left Arrow */}
+      
       <button
         onClick={scrollLeft}
         className="absolute left-0 top-2/3 transform -translate-y-2/3 bg-amber-300 p-2 rounded-full shadow-md hover:bg-amber-400 z-10"
@@ -57,7 +57,7 @@ function Reviews() {
         </span>
       </button>
       <div className="">
-        {/* Reviews Container */}
+        
         <div
           ref={scrollContainerRef}
           className="flex gap-4 sm:gap-5 mt-4 sm:mt-5 overflow-x-auto flex-nowrap snap-x snap-mandatory scrollbar scrollbar-thumb-amber-300 scrollbar-track-amber-100"
@@ -146,7 +146,7 @@ function Reviews() {
         </div>
       </div>
 
-      {/* Right Arrow */}
+     
       <button
         onClick={scrollRight}
         className="absolute right-0 top-2/3 transform -translate-y-2/3 bg-amber-300 p-2 rounded-full shadow-md hover:bg-amber-400 z-10"

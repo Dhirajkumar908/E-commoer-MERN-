@@ -3,7 +3,7 @@
 function Carousel() {
   return (
     <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-20 p-4 sm:p-6 md:p-10">
-      {/* Text and Search Section */}
+     
       <div className="basis-1/2 flex flex-col gap-3 sm:gap-4 mx-2 sm:mx-4 md:mx-10 md:pt-20 h-auto md:h-96">
         <h1 className="text-yellow-900 font-bold text-3xl text-center sm:text-start sm:text-4xl md:text-5xl">
           Choose your
@@ -33,7 +33,7 @@ function Carousel() {
         </div>
       </div>
 
-      {/* Image Section */}
+      
       <div className="flex justify-center">
         <img
           className="w-64 sm:w-72 md:w-80 h-72 sm:h-80 md:h-96 object-cover rounded-lg"

@@ -10,7 +10,7 @@ exports.SubmitOrder = async (req, res) => {
 
     console.log(JSON.stringify(req.body));
 
-    // Defensive checks for totalAmount
+   
     const totalAmount = items.reduce((total, item) => {
       const quantity = Number(item.quantity);
       const price = Number(item.priceAtPurchase);

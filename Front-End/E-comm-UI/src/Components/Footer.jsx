@@ -4,14 +4,14 @@ function Footer() {
   return (
     <>
       <div className="flex flex-col md:flex-row justify-between bg-amber-200 py-6 sm:py-8 md:py-10 mt-4 sm:mt-6">
-        {/* Brand Section */}
+        
         <div className="flex flex-col justify-center items-center w-full md:w-[30%] gap-2 sm:gap-3 p-4 sm:p-5">
           <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-center">
             Baggyes
           </h1>
         </div>
 
-        {/* Contact Info Section */}
+       
         <div className="flex flex-col items-center sm:items-start  w-full md:w-[30%] gap-2 sm:gap-3 p-4 sm:p-5">
           <p className="text-sm sm:text-base">
             <strong>Address: </strong> Noida, Uttar Pradesh
@@ -36,7 +36,7 @@ function Footer() {
           </p>
         </div>
 
-        {/* Links Section */}
+       
         <div className="flex flex-col  items-center sm:items-start w-full md:w-[30%] gap-2 sm:gap-3 p-4 sm:p-5">
           <p className="text-sm sm:text-base">
             <a href="/privacy-policy" className="hover:underline">
@@ -61,7 +61,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* Copyright Section */}
+     
       <div className="py-3 bg-amber-800">
         <p className="text-center text-white text-xs sm:text-sm">
           Copyright © {year} Baggyes. All rights reserved.

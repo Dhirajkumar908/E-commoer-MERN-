@@ -10,16 +10,16 @@ import { BrowserRouter } from "react-router-dom";
 
 import { CartProvider } from "./context/CartContext";
 
-import { AuthContext, AuthProvider } from "./context/AuthContext.jsx";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-    <AuthProvider>
+    
       <CartProvider>
         <App />
       </CartProvider>
-      </AuthProvider>
+      
     </BrowserRouter>
   </StrictMode>
 );

@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 
 function Cart() {
   const { cart, removeFromCart, setCart } = useContext(CartContext);
   const navigate=useNavigate()
 
-  // Handle quantity change
+ 
   const changeQuantity = (id, delta) => {
     const updated = cart.map((item) =>
       item._id === id
@@ -17,7 +17,7 @@ function Cart() {
     setCart(updated);
   };
 
-  // Total price
+  
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0

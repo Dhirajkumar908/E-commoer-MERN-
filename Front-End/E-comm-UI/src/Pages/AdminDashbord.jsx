@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import API from "../api/api";
+import { toast } from "react-toastify";
 
 function AdminDashboard() {
   const [products, setProducts] = useState([]);
@@ -41,15 +42,18 @@ function AdminDashboard() {
     e.preventDefault();
 
     const data = new FormData();
-    Object.entries(form).forEach(([key, value]) => {
+       Object.entries(form).forEach(([key, value]) => {
       data.append(key, value);
     });
 
+console.log(data);
+  
+
     API.post("/addproduct", data, {
-      headers: { Authorization: token },
+      headers: { Authorization: token ,  "Content-Type": "multipart/form-data"},
     })
       .then((res) => {
-        alert("Product added: " + res.data.message);
+        
         setForm({
           name: "",
           description: "",
@@ -58,9 +62,11 @@ function AdminDashboard() {
           image: null,
         });
         fetchProduct();
+        toast.success("Product added: " + res.data.message)
       })
       .catch((e) => {
         console.error("Failed to add product", e.response?.data?.message || e.message);
+        toast.error("Failed to add product", e.response?.data?.message || e.message)
       });
   };
 
@@ -68,7 +74,7 @@ function AdminDashboard() {
     try {
       const res = await API.delete(`/product/delete/${id}`,{headers:{Authorization:token}});
       alert(res.data.message);
-      fetchProduct(); // Refresh the list after deletion
+      fetchProduct();
     } catch (e) {
       alert(e.response?.data?.message || e.message);
     }
@@ -78,7 +84,7 @@ function AdminDashboard() {
     <div>
       <h2 className="text-2xl font-bold mb-6">Admin Product Dashboard</h2>
 
-      {/* Form */}
+     
       <form
         onSubmit={handleAddProduct}
         className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10"
@@ -130,7 +136,7 @@ function AdminDashboard() {
         </button>
       </form>
 
-      {/* Product Table */}
+     
       <table className="w-full border">
         <thead className="bg-gray-100">
           <tr>
