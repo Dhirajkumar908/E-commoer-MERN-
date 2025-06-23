@@ -1,6 +1,33 @@
+import { useState } from "react";
+import API from '../api/api';
+import { toast } from "react-toastify";
+
 function Contact() {
+  const [form, setForm]=useState({
+    name:"",
+    email:"",
+    message:""
+  })
+
+  const handleChange=(e)=>{
+    e.preventDefault()
+    setForm({...form, [e.target.name]:e.target.value})
+  }
+
+  const handleSubmit=async (e)=>{
+    e.preventDefault()
+    try{
+      const res=await API.post('/contect', form)
+      return toast.success(res.data.message)
+    }catch(e){
+      return toast.error(e.message)
+    }
+    console.log(form.name, form.email, form.message);
+    
+  }
+
   return (
-    <div className="bg-amber-50 min-h-screen rounded-t-3xl">
+    <div className="bg-amber-50 min-h-screen rounded-t-3xl ">
       
       <section className="flex flex-col items-center justify-center text-center bg-amber-100 py-10 sm:py-12 md:py-16 px-4 sm:px-6 rounded-t-3xl">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-900 mb-4 sm:mb-6">
@@ -57,6 +84,9 @@ function Contact() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300 text-sm sm:text-base"
                   placeholder="Your Name"
                 />
@@ -68,6 +98,9 @@ function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300 text-sm sm:text-base"
                   placeholder="Your Email"
                 />
@@ -77,12 +110,16 @@ function Contact() {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
                   id="message"
                   className="w-full p-2 sm:p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300 h-24 sm:h-32 text-sm sm:text-base"
                   placeholder="Your Message"
                 ></textarea>
               </div>
               <button
+              onClick={handleSubmit}
                 type="submit"
                 className="w-full bg-amber-300 text-yellow-900 p-2 sm:p-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-amber-400"
               >

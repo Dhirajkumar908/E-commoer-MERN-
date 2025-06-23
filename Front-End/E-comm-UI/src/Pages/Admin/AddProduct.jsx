@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import API from "../api/api";
+import API from "../../api/api";
 import { toast } from "react-toastify";
 
-function AdminDashboard() {
-  const [products, setProducts] = useState([]);
+function Addproduct(){
+    const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -176,4 +176,4 @@ console.log(data);
   );
 }
 
-export default AdminDashboard;
+export default Addproduct;

@@ -17,7 +17,11 @@ import Cart from "./Pages/Cart";
 import Profile from "./Pages/Profile";
 import Checkout from "./Pages/CheckOut";
 import FetchOrders from "./Pages/Orders";
-import AdminDashbord from "./Pages/AdminDashbord";
+import AdminDashbord from "./Pages/Admin/AdminDashbord";
+
+import Addproduct from './Pages/Admin/AddProduct';
+import ManageOrder from "./Pages/Admin/mange.Order";
+import Inquary from "./Pages/Admin/Inquary";
 
 import AdminRoute from "./routes/AdminRoute";
 
@@ -35,10 +39,11 @@ function App() {
           <Route path="/order" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/order/history" element={<FetchOrders />} />
-          <Route path="/Admin/Dashbord" element={
-            <AdminRoute> <AdminDashbord /> </AdminRoute>
-           
-            }/>
+          <Route path="/Admin/Dashbord" element={<AdminRoute> <AdminDashbord /> </AdminRoute>}>
+            <Route path="/Admin/Dashbord/addProduct" element={<Addproduct/>}/>
+             <Route path="/Admin/Dashbord/ManageOrder" element={<ManageOrder/>}/>
+              <Route path="/Admin/Dashbord/inquary" element={<Inquary/>}/>
+          </Route>
         </Route>
       </Routes>
 

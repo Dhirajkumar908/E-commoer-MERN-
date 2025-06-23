@@ -30,8 +30,8 @@ function FetchOrders() {
     fetchOrders();
   }, []);
 
-  return (
-    <div className="mt-4 sm:mt-6 md:mt-8">
+  return ( 
+    <div className="mt-4 sm:mt-6 md:mt-8 px-0 sm:px-6">
       <h1 className="text-2xl sm:text-3xl md:text-3xl text-center sm:text-left">Order History</h1>
       <p className="text-center sm:text-left text-sm sm:text-base">{message}</p>
       {orders.length > 0 && (

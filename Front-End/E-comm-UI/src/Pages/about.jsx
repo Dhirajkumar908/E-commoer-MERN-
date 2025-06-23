@@ -78,7 +78,7 @@ function AboutUs() {
               alt="Team Member 1"
               className="w-32 sm:w-40 h-32 sm:h-40 rounded-full object-cover mb-4"
             />
-            <h3 className="text-lg sm:text-xl font-semibold text-yellow-900">Priya Sharma</h3>
+            <h3 className="text-lg sm:text-xl font-semibold text-yellow-900">Dhiraj Kumar</h3>
             <p className="text-sm sm:text-base text-gray-700">Founder & Designer</p>
           </div>
           <div className="flex flex-col items-center">

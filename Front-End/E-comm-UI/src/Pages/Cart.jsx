@@ -24,7 +24,7 @@ function Cart() {
   );
 
   return (
-    <div className="p-6">
+    <div className=" px-0 sm:px-6  mt-5 ">
       <h2 className="text-2xl font-bold mb-6">Shopping Cart</h2>
 
       {cart.length === 0 ? (
