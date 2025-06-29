@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import API from "../../api/api";
 import { toast } from "react-toastify";
 
-function Addproduct(){
-    const [products, setProducts] = useState([]);
+function Addproduct() {
+  const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -42,18 +42,16 @@ function Addproduct(){
     e.preventDefault();
 
     const data = new FormData();
-       Object.entries(form).forEach(([key, value]) => {
+    Object.entries(form).forEach(([key, value]) => {
       data.append(key, value);
     });
 
-console.log(data);
-  
+    console.log(data);
 
     API.post("/addproduct", data, {
-      headers: { Authorization: token ,  "Content-Type": "multipart/form-data"},
+      headers: { Authorization: token, "Content-Type": "multipart/form-data" },
     })
       .then((res) => {
-        
         setForm({
           name: "",
           description: "",
@@ -62,17 +60,25 @@ console.log(data);
           image: null,
         });
         fetchProduct();
-        toast.success("Product added: " + res.data.message)
+        toast.success("Product added: " + res.data.message);
       })
       .catch((e) => {
-        console.error("Failed to add product", e.response?.data?.message || e.message);
-        toast.error("Failed to add product", e.response?.data?.message || e.message)
+        console.error(
+          "Failed to add product",
+          e.response?.data?.message || e.message
+        );
+        toast.error(
+          "Failed to add product",
+          e.response?.data?.message || e.message
+        );
       });
   };
 
   const handleDelete = async (id) => {
     try {
-      const res = await API.delete(`/product/delete/${id}`,{headers:{Authorization:token}});
+      const res = await API.delete(`/product/delete/${id}`, {
+        headers: { Authorization: token },
+      });
       alert(res.data.message);
       fetchProduct();
     } catch (e) {
@@ -80,11 +86,21 @@ console.log(data);
     }
   };
 
+  const handleUpdate = (id)=>{
+    const productToupdate=products[id];
+    setForm({
+          name: productToupdate.name,
+          description: productToupdate.description,
+          price: productToupdate.price,
+          category: productToupdate.category,
+          image: productToupdate.image,
+        })
+    
+  }
   return (
     <div>
       <h2 className="text-2xl font-bold mb-6">Admin Product Dashboard</h2>
 
-     
       <form
         onSubmit={handleAddProduct}
         className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10"
@@ -136,7 +152,6 @@ console.log(data);
         </button>
       </form>
 
-     
       <table className="w-full border">
         <thead className="bg-gray-100">
           <tr>
@@ -148,7 +163,7 @@ console.log(data);
           </tr>
         </thead>
         <tbody>
-          {products.map((prod) => (
+          {products.map((prod, idx) => (
             <tr key={prod._id}>
               <td className="p-2 border">
                 <img
@@ -160,12 +175,18 @@ console.log(data);
               <td className="p-2 border">{prod.name}</td>
               <td className="p-2 border">₹{prod.price}</td>
               <td className="p-2 border">{prod.category}</td>
-              <td className="p-2 border">
+              <td className="p-2 border text-end">
                 <button
                   onClick={() => handleDelete(prod._id)}
                   className="bg-red-500 text-white px-3 py-1 rounded"
                 >
                   Delete
+                </button>
+                <button
+                  onClick={() => handleUpdate(idx)}
+                  className="bg-blue-500 text-white px-3 py-1 rounded ml-5"
+                >
+                  update
                 </button>
               </td>
             </tr>

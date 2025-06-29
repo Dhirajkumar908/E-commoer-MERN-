@@ -25,20 +25,28 @@ function ProductGrid() {
             alt={product.name}
           />
           <div className="flex flex-col gap-1 p-2 sm:p-3 bg-amber-100 h-full rounded-b-lg">
-            <p className="font-semibold text-xs sm:text-sm md:text-base">{product.name}</p>
+            <p className="font-semibold text-xs sm:text-sm md:text-base">
+              {product.name}
+            </p>
             <p className="text-xs sm:text-sm">Price: Rs {product.price}</p>
-            <p className="text-xs sm:text-sm text-gray-700 truncate">{product.description}</p>
+            <p className="text-xs sm:text-sm text-gray-700 truncate">
+              {product.description}
+            </p>
             <div className="flex gap-2 sm:gap-3 mt-1 sm:mt-2">
               <button
-              onClick={() => addToCartAndredirect(product)}
-              className="shadow-sm bg-amber-300 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-md hover:bg-amber-400">
-                Buy
+                onClick={() => addToCartAndredirect(product)}
+                className="shadow-sm bg-amber-300 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-md hover:bg-amber-400"
+              >
+                Buy now
               </button>
               <button
                 onClick={() => addToCart(product)}
-                className="shadow-sm bg-amber-300 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-md hover:bg-amber-400"
-              >
-                Add
+                className="flex items-center shadow-sm bg-amber-300 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-md hover:bg-amber-400"
+              >Add to
+                <span className="material-symbols-outlined ">
+                  add_shopping_cart
+                </span>
+                
               </button>
             </div>
           </div>

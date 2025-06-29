@@ -1,0 +1,17 @@
+#hero_heading{
+    width:22ch;
+    height: 100%;
+    text-wrap:nowrap;
+    overflow:hidden;
+    animation:typing 3s  steps(30) infinite alternate-reverse;
+}
+
+@keyframes typing{
+    from{
+        width:0ch;
+    }
+}
+
+#bag_img{
+    filter: drop-shadow(6px 6px 6px #000);
+}

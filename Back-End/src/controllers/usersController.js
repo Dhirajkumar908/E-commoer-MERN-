@@ -15,7 +15,6 @@ exports.CreateUser = async (req, res) => {
     if (isExist) {
       return res.status(409).json({ message: "User already exist" });
     }
-    console.log(password);
     
     const hashedPassword = await hashPassword(password);
 
@@ -52,14 +51,14 @@ exports.LoginUser = async (req, res) => {
 
     const user = await User.findOne({ email: email});
     
-    console.log(user)
+    
     
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password." });
     }
 
     const match = await Compare_password(password, user.password);
-    console.log(match);
+    
     
 
     if (!match) {

@@ -22,8 +22,12 @@ function FetchOrders() {
         setOrders(res.data);
         console.log(res.data);
       } catch (e) {
-        setMessage(e.message || "Failed to fetch orders");
-        toast.error(e.message || "Failed to fetch orders")
+        if(e.status===401){
+          toast.error('Login required')
+          return
+        }
+        setMessage(e.response?.data?.message || "Failed to fetch orders");
+        toast.error(e.response?.data?.message|| "Failed to fetch orders")
       }
     };
 

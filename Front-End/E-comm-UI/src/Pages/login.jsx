@@ -31,6 +31,10 @@ function Loginuser() {
         }
       }
       toast.success("Login success full")
+
+      if(userdata.user.role==="Admin"){
+        return navigate('/Admin/Dashbord')
+      }
       setTimeout(() => {
         navigate("/");
       }, 2000);

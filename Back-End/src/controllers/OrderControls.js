@@ -8,7 +8,7 @@ exports.SubmitOrder = async (req, res) => {
       return res.status(400).json({ message: "Required fields are missing" });
     }
 
-    console.log(JSON.stringify(req.body));
+    // console.log(JSON.stringify(req.body));
 
    
     const totalAmount = items.reduce((total, item) => {
@@ -22,7 +22,7 @@ exports.SubmitOrder = async (req, res) => {
       return total + price * quantity;
     }, 0);
 
-    console.log(totalAmount);
+    // console.log(totalAmount);
 
     const order = new Order({
       userId,
@@ -32,7 +32,7 @@ exports.SubmitOrder = async (req, res) => {
       orderStatus: "pending",
     });
 
-    console.log(order);
+    // console.log(order);
 
     await order.save();
 
@@ -48,11 +48,11 @@ exports.SubmitOrder = async (req, res) => {
 };
 
 exports.ListOrders = async (req, res) => {
-  console.log("Function called");
+  // console.log("Function called"); 
   
   try {
     const { id } = req.params;
-    console.log(id);
+    // console.log(id);
     const order = await Order.find({ userId: id });
     return res.status(200).json(order);
   } catch (e) {
@@ -62,3 +62,28 @@ exports.ListOrders = async (req, res) => {
     });
   }
 };
+
+
+
+exports.ListOrdersAll=async(req,res)=>{
+  try{
+    const allOrders=await Order.find();
+    if(!allOrders){
+      return res.json({message:"There is no Order yet"})
+    }
+    return res.status(200).json(allOrders)
+  }catch(error){
+    return res.status(500).json(error)
+  }
+}
+
+exports.updateOrder=async(req, res)=>{
+  const {id}=req.params;
+  const {status}=req.body;  
+  try{
+    await Order.findByIdAndUpdate(id, {orderStatus:status})
+    res.status(200).json({message:"Order status updated successfull!"})
+  }catch(error){
+    res.status(500).json({message:"server error"})
+  }
+}

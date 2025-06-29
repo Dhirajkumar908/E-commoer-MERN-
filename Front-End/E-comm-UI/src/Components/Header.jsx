@@ -2,9 +2,10 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react"; 
 import UserDropDown from "../Components/UserDropDown";
 
+
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
-
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -64,6 +65,8 @@ function Header() {
 
         
         <div className="hidden md:flex gap-4 items-center">
+          
+          
           <NavLink
             to="/cart"
             className={({ isActive }) =>
@@ -71,10 +74,13 @@ function Header() {
             }
             aria-label="Shopping Cart"
           >
+           
             <span className="material-symbols-outlined text-3xl text-gray-900 hover:bg-gray-50 focus:outline-none">
               shopping_cart
             </span>
+            
           </NavLink>
+          
           <UserDropDown />
         </div>
       </div>
